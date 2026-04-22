@@ -1,0 +1,65 @@
+🌐 NEXUS DApp — Smart Contracts
+Visão Geral
+NEXUS é uma DApp descentralizada construída sobre a blockchain Ethereum. Este repositório contém os smart contracts, scripts de deploy e testes do projeto.
+
+O token principal do ecossistema é o NXS (Nexus Token) — um ERC-20 com funcionalidades de governança, queima e permissões gasless (ERC-20 Permit/Votes).
+
+📁 Estrutura do Workspace
+Nexus_Dapp_PosSmartContracts/
+├── .deps/            # Dependências (OpenZeppelin, etc.)
+├── artifacts/        # ABIs e bytecodes gerados pela compilação
+├── contracts/        # Smart contracts Solidity
+│   └── NexusToken.sol
+├── scripts/          # Scripts de deploy (TypeScript/ethers.js)
+├── tests/            # Testes unitários (Solidity & JS)
+├── .prettierrc.json  # Configuração de formatação
+├── remix.config.json # Configuração do Remix IDE
+└── README.md         # Este arquivo
+🪙 NexusToken (NXS)
+Propriedade	Valor
+Nome	Nexus Token
+Símbolo	NXS
+Decimais	18
+Supply Máximo	100.000.000 NXS
+Mint Inicial	10.000.000 NXS (para o owner)
+Padrão	ERC-20
+
+Extensões	Burnable, Permit, Votes
+Controle de Acesso	Ownable2Step
+Compilador	Solidity 0.8.28
+
+Funcionalidades
+Mint controlado — Apenas o owner pode mintar, respeitando o MAX_SUPPLY.
+Burn — Qualquer holder pode queimar seus tokens.
+Permit (EIP-2612) — Aprovações gasless via assinatura off-chain.
+Votes (ERC-20Votes) — Suporte nativo a governança on-chain (delegação de votos, snapshots).
+Ownable2Step — Transferência de ownership em duas etapas para maior segurança.
+
+🚀 Como Usar
+Compilar
+Abra o Remix IDE.
+Selecione o workspace Nexus_Dapp_PosSmartContracts.
+Compile contracts/NexusToken.sol com Solidity 0.8.28.
+Deploy
+Vá em Deploy & Run Transactions.
+Selecione o contrato NexusToken.
+Informe o endereço do initialOwner como argumento do constructor.
+Clique em Deploy.
+Testes
+Clique com o botão direito no arquivo de teste em tests/ e selecione Run.
+
+🔒 Segurança
+Uso de OpenZeppelin v5.x (contratos auditados).
+Ownable2Step previne transferências acidentais de ownership.
+Custom error NexusToken__ExceedsMaxSupply() para eficiência de gas.
+Sem funções de delegatecall ou selfdestruct.
+
+📦 Dependências
+OpenZeppelin Contracts v5.x
+ERC20, ERC20Burnable, ERC20Permit, ERC20Votes
+Ownable2Step, Nonces
+
+📄 Licença
+MIT
+
+Projeto NEXUS — Construindo o futuro descentralizado. 🚀
